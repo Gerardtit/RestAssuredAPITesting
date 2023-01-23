@@ -11,6 +11,7 @@ import io.restassured.specification.RequestSpecification;
 
 import org.example.properties.PropertiesFile;
 import org.testng.Assert;
+import utils.Utils;
 
 import static io.restassured.RestAssured.given;
 
@@ -24,6 +25,7 @@ public class APIStepDefinitions {
     public void userCallsGetAPIStatus() {
         String path = "/status";
         response = given().when().get(path).then().extract().response();
+        Utils.setResponse(response);
     }
 
     @And("^user authenticates the API request with (.*)$")
@@ -41,6 +43,7 @@ public class APIStepDefinitions {
 
     @Then("^validate response status is (.*)$")
     public void  validateResponseStatusisStatus(String status) {
+        response = Utils.getResponse();
         Assert.assertTrue(response.getStatusLine().contains(status), "Error in status response");
     }
 

@@ -33,7 +33,10 @@ public class UserSteps{
                     .when()
                         .post(path)
                     .then()
+                        //.log().all()
                         .extract().response();
+
+
         Utils.setResponse(response);
     }
 }

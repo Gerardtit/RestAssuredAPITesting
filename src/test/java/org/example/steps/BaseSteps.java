@@ -17,8 +17,6 @@ import utils.Utils;
 
 public class BaseSteps {
 
-
-
     @Given("^user sets the base API request \"([^\"]*)\"$")
     public void userSetsTheBaseAPIRequestURL(String URL) {
         if (URL.equals("base")){
@@ -32,8 +30,14 @@ public class BaseSteps {
     public void validateResponseIsCode(int code) {
         Response response = Utils.getResponse();
         Assert.assertEquals(response.getStatusCode(), code,"Error in code response");
+    }
+
+    @Then("^validate and save bearer$")
+    public void validateSaveBearer() {
+        Response response = Utils.getResponse();
         JsonPath jsonPathEvaluator = response.jsonPath();
         String bearer = jsonPathEvaluator.get("accessToken");
         PropertiesFile.setAPIProperty("bearer", bearer);
     }
+
 }
