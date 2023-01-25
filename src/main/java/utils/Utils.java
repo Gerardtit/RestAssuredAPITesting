@@ -1,12 +1,16 @@
 package utils;
 
 import io.restassured.response.Response;
+import net.minidev.json.JSONArray;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Utils {
     public static String randomString = RandomStringUtils.randomAlphabetic(6);
 
     public static Response response;
+    public static JSONArray jsonResponse;
+
+
     public static String getFirstName() {
         return ("John"+randomString);
     }
@@ -27,7 +31,15 @@ public class Utils {
         response = resp;
     }
 
+    public static void setJSONResponse(JSONArray json) {
+        jsonResponse = json;
+    }
+
     public static Response getResponse() {
         return response;
+    }
+
+    public static JSONArray getJSONResponse() {
+        return jsonResponse;
     }
 }

@@ -35,8 +35,6 @@ public class UserSteps{
                     .then()
                         //.log().all()
                         .extract().response();
-
-
         Utils.setResponse(response);
     }
 }
