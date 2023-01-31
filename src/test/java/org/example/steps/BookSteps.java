@@ -33,11 +33,12 @@ public class BookSteps {
     }
     @Given("^user calls Gets Single of book by id \"([^\"]*)\"$")
     public void userCallsGetSingleBookById(String id) {
-        String path = "/books/";
+        String path = "/books/{id}";
         response =  given()
                         .contentType("application/json")
+                        .pathParam("id", id)
                     .when()
-                        .get(path + id)
+                        .get(path)
                     .then()
                         //.log().all()
                         .extract().response();

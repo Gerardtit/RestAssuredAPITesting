@@ -3,6 +3,7 @@
 
 Feature: Tests for books
 
+  @Test
   Scenario: List of books response is 200
     Given user sets the base API request "base"
     When  user calls Gets List of books type "non-fiction"
@@ -23,6 +24,7 @@ Feature: Tests for books
   |non-fiction     | Untamed    | true      |
   |fiction         | The Russian| true      |
 
+  @Test
   Scenario: Get single book by id
     Given user sets the base API request "base"
     When  user calls Gets Single of book by id "1"

@@ -19,13 +19,13 @@ public class UserSteps{
     public static Response response;
 
     @Given("^user sets post data for creating an user$")
-    public void setsPostDataForCreatingUser() {
+    public static void setsPostDataForCreatingUser() {
         map.put("clientName", Utils.getFirstName());
         map.put("clientEmail", Utils.getEmail());
     }
 
     @Given("^user calls Post Customer API")
-    public void userCallsGetAPIStatus() {
+    public static void userCallsPostCustomerAPI() {
         String path = "/api-clients";
         response =  given()
                         .contentType("application/json")
@@ -33,8 +33,14 @@ public class UserSteps{
                     .when()
                         .post(path)
                     .then()
-                        //.log().all()
+                        .log().all()
                         .extract().response();
         Utils.setResponse(response);
+    }
+
+    @Then("^validate updated user name$")
+    public void validateUpdatedUsername() {
+        Response response = Utils.getResponse();
+        Assert.assertEquals(com.jayway.jsonpath.JsonPath.read(response.asString(), "$.customerName").toString() , PropertiesFile.readAPIProperty("updateName"),"Error new name has not been updated");
     }
 }
