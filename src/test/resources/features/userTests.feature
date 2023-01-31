@@ -6,5 +6,5 @@ Feature: User tests
     And   user sets post data for creating an user
     When  user calls Post Customer API
     Then  validate response is 201
-    And   validate and save bearer
+    And   user saves bearer
     And   validate response status is Created

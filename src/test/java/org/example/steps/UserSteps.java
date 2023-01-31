@@ -20,6 +20,7 @@ public class UserSteps{
 
     @Given("^user sets post data for creating an user$")
     public static void setsPostDataForCreatingUser() {
+        Utils.randomString();
         map.put("clientName", Utils.getFirstName());
         map.put("clientEmail", Utils.getEmail());
     }
@@ -33,10 +34,11 @@ public class UserSteps{
                     .when()
                         .post(path)
                     .then()
-                        .log().all()
+                        //.log().all()
                         .extract().response();
         Utils.setResponse(response);
     }
+
 
     @Then("^validate updated user name$")
     public void validateUpdatedUsername() {

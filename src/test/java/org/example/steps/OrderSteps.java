@@ -114,7 +114,6 @@ public class OrderSteps {
         PropertiesFile.setAPIProperty("orderId", orderId);
     }
 
-
     @Then("^validate error message for no existing order by id$")
     public void validateErrorMessageForNoExistingOrderById() {
         Response response = Utils.getResponse();

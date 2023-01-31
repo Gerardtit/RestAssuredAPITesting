@@ -42,4 +42,8 @@ public class Utils {
     public static JSONArray getJSONResponse() {
         return jsonResponse;
     }
+
+    public static void randomString() {
+        randomString = RandomStringUtils.randomAlphabetic(6);
+    }
 }
